@@ -1,5 +1,7 @@
 package com.snackshelf;
 
+import java.util.Objects;
+
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 public class User {
@@ -37,6 +39,23 @@ public String getSurname() {
 }
 public void setSurname(String surname) {
 	this.surname = surname;
+}
+
+
+@Override
+public int hashCode() {
+	return Objects.hash(_id, name, surname);
+}
+@Override
+public boolean equals(Object obj) {
+	if (this == obj)
+		return true;
+	if (obj == null)
+		return false;
+	if (getClass() != obj.getClass())
+		return false;
+	User other = (User) obj;
+	return Objects.equals(_id, other._id) && Objects.equals(name, other.name) && Objects.equals(surname, other.surname);
 }
 @Override
 public String toString() {

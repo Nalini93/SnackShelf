@@ -1,7 +1,7 @@
 package com.snackshelf;
 
-import com.snackshelf.Order;
-import com.snackshelf.OrderRepository;
+import com.snackshelf.Product;
+import com.snackshelf.ProductRepository;
 
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,46 +14,40 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/order")
-  public class OrderController {
+@RequestMapping("/product")
+  public class ProductController {
    @Autowired
-   private OrderRepository repository;
-   
-   @Autowired
-   private UserRepository repository1;
+   private ProductRepository repository;
 
    //get 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	
-	public List getAllOrders() {
+	public List getAllProducts() {
 	 return repository.findAll();
 	}
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	 public Order getOrderById(@PathVariable("id") ObjectId id) {
+	 public Product getProductById(@PathVariable("id") ObjectId id) {
 	  return repository.findBy_id(id);
 	 }
 	
 	//PUT
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	  public void modifyOrderById(@PathVariable("id") ObjectId id, @Valid @RequestBody Order order) {
-	   order.set_id(id);
-	   repository.save(order);
+	  public void modifyProductById(@PathVariable("id") ObjectId id, @Valid @RequestBody Product product) {
+	   product.set_id(id);
+	   repository.save(product);
 	  }
 	
 	//POST
 	@RequestMapping(value = "/", method = RequestMethod.POST)
-	  public Order createOrder(@Valid @RequestBody Order order) {
-	   order.set_id(ObjectId.get());
-	   //User user=new User();
-	   //user=order.getuser().get_id();
-	   repository.save(order);
-	   //repository1.save();
-	   return order;
+	  public Product createProduct(@Valid @RequestBody Product product) {
+	   product.set_id(ObjectId.get());
+	   repository.save(product);
+	   return product;
 	  }
 	
 	//DELETE
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	  public void deleteOrder(@PathVariable ObjectId id) {
+	  public void deleteProduct(@PathVariable ObjectId id) {
 	   repository.delete(repository.findBy_id(id));
 	  }
 
