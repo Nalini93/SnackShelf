@@ -1,8 +1,5 @@
 package com.snackshelf;
 
-import com.snackshelf.Order;
-import com.snackshelf.OrderRepository;
-
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,24 +18,24 @@ public class ProductController{
 
     //GET
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public List getAllProducts() {
+    public List getAllProducts(){
         return repository.findAll();
     }
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public Product getProductById(@PathVariable("id") ObjectId id) {
-        return repository.findById(id);
+    public Product getProductById(@PathVariable("id") ObjectId id){
+        return repository.findBy_id(id);
     }
 
     //PUT
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public void modifyProductById(@PathVariable("id") ObjectId id, @Valid @RequestBody Product product) {
+    public void modifyProductById(@PathVariable("id") ObjectId id, @Valid @RequestBody Product product){
         product.setProductId(id);
         repository.save(product);
     }
 
     //POST
     @RequestMapping(value = "/", method = RequestMethod.POST)
-    public Product createProduct(@Valid @RequestBody Product product) {
+    public Product createProduct(@Valid @RequestBody Product product){
         product.setProductId(ObjectId.get());
         repository.save(product);
         return product;
@@ -47,6 +44,6 @@ public class ProductController{
     //DELETE
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void deleteProduct(@PathVariable ObjectId id) {
-        repository.delete(repository.findById(id));
+        repository.delete(repository.findBy_id(id));
     }
 }

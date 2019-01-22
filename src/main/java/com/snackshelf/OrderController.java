@@ -15,46 +15,51 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/order")
-  public class OrderController {
-   @Autowired
-   private OrderRepository repository;
-   
-   @Autowired
-   private UserRepository repository1;
-
-   //get 
+  public class OrderController{
+	  @Autowired
+   	  private OrderRepository orderRepo;
+   	  @Autowired
+   	  private UserRepository userRepo;
+   	  @Autowired
+	  private ProductRepository productRepo;
+   //GET
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	
 	public List getAllOrders() {
-	 return repository.findAll();
+	 return orderRepo.findAll();
 	}
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	 public Order getOrderById(@PathVariable("id") ObjectId id) {
-	  return repository.findBy_id(id);
-	 }
+	public Order getOrderById(@PathVariable("id") ObjectId id){
+		//productRepo.findBy_id(id);
+		//userRepo.findBy_id(id);
+		return orderRepo.findBy_id(id);
+	}
 	
 	//PUT
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	  public void modifyOrderById(@PathVariable("id") ObjectId id, @Valid @RequestBody Order order) {
-	   order.set_id(id);
-	   repository.save(order);
-	  }
+	public void modifyOrderById(@PathVariable("id") ObjectId id, @Valid @RequestBody Order order) {
+		order.set_id(id);
+	   	orderRepo.save(order);
+	}
 	
 	//POST
 	@RequestMapping(value = "/", method = RequestMethod.POST)
-	  public Order createOrder(@Valid @RequestBody Order order,User user) {
-	   order.set_id(ObjectId.get());
-	   repository.save(order);
-	   repository1.save(user);
-	   return order;
-	  }
+	public Order createOrder(@Valid @RequestBody Order order, User user, ObjectId id){
+		user = userRepo.findBy_id(id);
+		System.out.println(user.toString());
+
+		if(user.getName() == null){
+			System.err.println("prova");
+		}else{
+			orderRepo.save(order);
+			System.out.println(orderRepo);
+			System.out.println(user);
+		}
+	   	return order;
+	}
 	
 	//DELETE
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	  public void deleteOrder(@PathVariable ObjectId id) {
-	   repository.delete(repository.findBy_id(id));
+	  public void deleteOrder(@PathVariable ObjectId id){
+		orderRepo.delete(orderRepo.findBy_id(id));
 	  }
-
-
-	
 }
