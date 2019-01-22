@@ -1,19 +1,20 @@
-/*package com.snackshelf;
+package com.snackshelf;
 
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 
+import java.util.Date;
+
 public class Product{
     @Id
-    public ObjectId _id;
-    
-    public String type, productionDate, expirationDate, productName, companyName;
+    public ObjectId _productId;
+    public String type, productName, companyName;
+    public Date productionDate, expirationDate;
     public double price;
 
-    // Constructors
     public Product(){}
-    public Product(ObjectId _id, String type, String productionDate, String expirationDate, String productName, String companyName, double price){
-        this._id = _id;
+    public Product(ObjectId _productId, String type, Date productionDate, Date expirationDate, String productName, String companyName, double price){
+        this._productId = _productId;
         this.type = type;
         this.productionDate = productionDate;
         this.expirationDate = expirationDate;
@@ -21,22 +22,28 @@ public class Product{
         this.companyName = companyName;
         this.price = price;
     }
+    public ObjectId getProductId(){
+        return _productId;
+    }
+    public void setProductId(ObjectId _productId){
+        this._productId = _productId;
+    }
     public String getType(){
         return this.type;
     }
     public void setType(String type){
         this.type = type;
     }
-    public String getProductionDate(){
+    public Date getProductionDate(){
         return this.productionDate;
     }
-    public void setProductionDate(String productionDate){
+    public void setProductionDate(Date productionDate){
         this.productionDate = productionDate;
     }
-    public String getExpirationDate(){
+    public Date getExpirationDate(){
         return this.expirationDate;
     }
-    public void setExpirationDate(String expirationDate){
+    public void setExpirationDate(Date expirationDate){
         this.expirationDate = expirationDate;
     }
     public String getProductName(){
@@ -57,4 +64,19 @@ public class Product{
     public void setPrice(int price){
         this.price = price;
     }
-}*/
+    public void setPrice(double price){
+        this.price = price;
+    }
+    @Override
+    public String toString(){
+        return "Product{" +
+                "_productId=" + _productId +
+                ", type='" + type + '\'' +
+                ", productName='" + productName + '\'' +
+                ", companyName='" + companyName + '\'' +
+                ", productionDate=" + productionDate +
+                ", expirationDate=" + expirationDate +
+                ", price=" + price +
+                '}';
+    }
+}
