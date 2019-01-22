@@ -1,42 +1,44 @@
 package com.snackshelf;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
+import com.snackshelf.User;
 public class Order {
 
 
 
 	@Id
-	public ObjectId _orderid, _userid;
+	public ObjectId _id;
 	
 	public int quantity;
 	public double total;
+	public User user;
  
 	public Order() {
 		
 	}
  
-	public Order(ObjectId _orderid, ObjectId _userid, int quantity, double total) {
+	public Order(User user,int quantity, double total) {
 		
-		this._orderid = _orderid;
-		this._userid = _userid;
+		
+		this.user = user;
 		this.quantity = quantity;
 		this.total = total;
 	}
 
-	public ObjectId get_orderid() {
-		return _orderid;
+	public ObjectId get_id() {
+		return _id;
 	}
 
-	public void set_orderid(ObjectId _orderid) {
-		this._orderid = _orderid;
+	public void set_id(ObjectId _id) {
+		this._id = _id;
 	}
 
-	public ObjectId get_userid() {
-		return _userid;
+	public User getuser() {
+		return user;
 	}
 
-	public void set_userid(ObjectId _userid) {
-		this._userid = _userid;
+	public void setuser(User user) {
+		this.user = user;
 	}
 
 	public int getQuantity() {
@@ -54,6 +56,15 @@ public class Order {
 	public void setTotal(double total) {
 		this.total = total;
 	}
+
+	@Override
+	public String toString() {
+		return "Order [_id=" + _id + ", quantity=" + quantity + ", total=" + total + ", user=" + user + "]";
+	}
+
+	
+
+	
 }
  
  

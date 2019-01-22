@@ -1,20 +1,19 @@
-package com.snackshelf;
+/*package com.snackshelf;
 
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 
 public class Product{
     @Id
-    public ObjectId prova1;
-    public ObjectId prova2;
+    public ObjectId _id;
+    
     public String type, productionDate, expirationDate, productName, companyName;
     public double price;
 
     // Constructors
     public Product(){}
-    public Product(ObjectId prova1, ObjectId prova2, String type, String productionDate, String expirationDate, String productName, String companyName, double price){
-        this.prova1 = prova1;
-        this.prova2 = prova2;
+    public Product(ObjectId _id, String type, String productionDate, String expirationDate, String productName, String companyName, double price){
+        this._id = _id;
         this.type = type;
         this.productionDate = productionDate;
         this.expirationDate = expirationDate;
@@ -58,4 +57,4 @@ public class Product{
     public void setPrice(int price){
         this.price = price;
     }
-}
+}*/
