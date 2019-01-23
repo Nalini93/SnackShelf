@@ -23,6 +23,7 @@ public class UserController{
 	}
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public User getUserById(@PathVariable("id") ObjectId id){
+   		System.out.println("GET");
    		return repository.findBy_id(id);
    	}
 	

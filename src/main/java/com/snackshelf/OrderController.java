@@ -14,7 +14,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/order")
+@RequestMapping("/orders")
   public class OrderController{
 	  @Autowired
    	  private OrderRepository orderRepo;
@@ -22,15 +22,13 @@ import java.util.List;
    	  private UserRepository userRepo;
    	  @Autowired
 	  private ProductRepository productRepo;
-   //GET
+   	  //GET
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public List getAllOrders() {
 	 return orderRepo.findAll();
 	}
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public Order getOrderById(@PathVariable("id") ObjectId id){
-		//productRepo.findBy_id(id);
-		//userRepo.findBy_id(id);
 		return orderRepo.findBy_id(id);
 	}
 	
@@ -43,23 +41,14 @@ import java.util.List;
 	
 	//POST
 	@RequestMapping(value = "/", method = RequestMethod.POST)
-	public Order createOrder(@Valid @RequestBody Order order, User user, ObjectId id){
-		user = userRepo.findBy_id(id);
-		System.out.println(user.toString());
-
-		if(user.getName() == null){
-			System.err.println("prova");
-		}else{
-			orderRepo.save(order);
-			System.out.println(orderRepo);
-			System.out.println(user);
-		}
+	public Order createOrder(@Valid @RequestBody Order order, User user){
+		orderRepo.save(order);
+		System.err.println(order.toString());
 	   	return order;
 	}
 	
 	//DELETE
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	  public void deleteOrder(@PathVariable ObjectId id){
-		orderRepo.delete(orderRepo.findBy_id(id));
-	  }
+	  public void deleteOrder(@PathVariable ObjectId id){ 	orderRepo.delete(orderRepo.findBy_id(id));
+	}
 }

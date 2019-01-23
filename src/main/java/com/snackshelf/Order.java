@@ -2,17 +2,24 @@ package com.snackshelf;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import com.snackshelf.User;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
-public class Order{
+import java.io.Serializable;
+
+@Document(collection = "orders")
+public class Order implements Serializable{
 	@Id
 	public ObjectId _id;
 	public int quantity;
 	public double total;
+	@DBRef
+	@Field("users")
 	public User user;
 
 	public Order(){}
-	public Order(User user, int quantity, double total){
-		this.user = user;
+	public Order(int quantity, double total){
 		this.quantity = quantity;
 		this.total = total;
 	}

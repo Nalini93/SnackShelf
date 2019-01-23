@@ -2,7 +2,14 @@ package com.snackshelf;
 
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
-public class User{
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.io.Serializable;
+
+@Document(collection = "users")
+public class User implements Serializable{
+
+
     @Id
     public ObjectId _id;
     public String name;

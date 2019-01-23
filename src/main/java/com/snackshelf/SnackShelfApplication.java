@@ -5,6 +5,11 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Calendar;
+import java.util.Date;
+
 @SpringBootApplication
 public class SnackShelfApplication implements CommandLineRunner{
 	@Autowired
@@ -19,6 +24,10 @@ public class SnackShelfApplication implements CommandLineRunner{
 	}
 	@Override
 	public void run(String... args) throws Exception{
+		orderRepo.deleteAll();
+		userRepo.deleteAll();
+		productRepo.deleteAll();
+
 		System.out.println("Orders found with findAll():");
 		System.out.println("-------------------------------");
 		for(Order order : orderRepo.findAll()){
@@ -38,5 +47,8 @@ public class SnackShelfApplication implements CommandLineRunner{
 		for(User user : userRepo.findAll()){
 			System.out.println(user);
 		}
+
+		Product product = new Product();
+		product.setExpirationDate();
 	}
 }
