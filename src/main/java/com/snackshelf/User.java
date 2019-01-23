@@ -4,6 +4,8 @@ import java.util.Objects;
 
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 public class User {
  @Id
  public ObjectId _id;

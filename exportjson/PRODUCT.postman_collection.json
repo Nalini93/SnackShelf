@@ -1,0 +1,230 @@
+{
+	"info": {
+		"_postman_id": "2e7a0a4e-c1be-45a4-8038-c40f31ed78bf",
+		"name": "PRODUCT",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/product/",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "f6f5c02c-b7ea-45e2-a825-1a986724e77b",
+						"exec": [
+							"pm.globals.set(\"id\", \"5c471be4de0d1658e9705add\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\" :\"Albus\",\n\t\"surname\" : \"Dumbledore\"\n\t\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/product/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"product",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/product/{{id}}",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "f6f5c02c-b7ea-45e2-a825-1a986724e77b",
+						"exec": [
+							"pm.globals.set(\"id\", \"5c4734c3de0d165932fa02ec\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\" :\"Albus\",\n\t\"surname\" : \"Dumbledore\"\n\t\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/product/{{id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"product",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/product/{{id}}",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "f6f5c02c-b7ea-45e2-a825-1a986724e77b",
+						"exec": [
+							"pm.globals.set(\"id\", \"5c4734c3de0d165932fa02ec\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"productName\" :\"Farfalle\",\n\t\"companyName\" : \"Barilla\"\n\t\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/product/{{id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"product",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/product/",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "f6f5c02c-b7ea-45e2-a825-1a986724e77b",
+						"exec": [
+							"pm.globals.set(\"id\", \"5c4734c3de0d165932fa02ec\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"productName\" :\"Penne\",\n\t\"companyName\" : \"Barilla\"\n\t\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/product/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"product",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/product/{{id}}",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "f6f5c02c-b7ea-45e2-a825-1a986724e77b",
+						"exec": [
+							"pm.globals.set(\"id\", \"5c488787de0d165f80f3defe\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"productName\" :\"Penne\",\n\t\"companyName\" : \"Barilla\"\n\t\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/product/{{id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"product",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

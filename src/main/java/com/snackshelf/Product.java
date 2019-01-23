@@ -7,7 +7,8 @@ public class Product{
     @Id
     public ObjectId _id;
     
-    public String type, productionDate, expirationDate, productName, companyName;
+    public String type, productionDate, expirationDate, productName,companyName; 
+   
     public double price;
 
     // Constructors

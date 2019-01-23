@@ -1,6 +1,9 @@
 package com.snackshelf;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Field;
+
 import com.snackshelf.User;
 public class Order {
 
@@ -11,16 +14,22 @@ public class Order {
 	
 	public int quantity;
 	public double total;
+	@DBRef
+	@Field("users")
 	public User user;
+	@DBRef
+	@Field("products")
+	public Product product;
  
 	public Order() {
 		
 	}
  
-	public Order(User user,int quantity, double total) {
+	public Order(User user,Product product, int quantity, double total) {
 		
 		
 		this.user = user;
+		this.product=product;
 		this.quantity = quantity;
 		this.total = total;
 	}
@@ -59,9 +68,11 @@ public class Order {
 
 	@Override
 	public String toString() {
-		return "Order [_id=" + _id + ", quantity=" + quantity + ", total=" + total + ", user=" + user + "]";
+		return "Order [_id=" + _id + ", quantity=" + quantity + ", total=" + total + ", user=" + user + ", product="
+				+ product + "]";
 	}
 
+	
 	
 
 	

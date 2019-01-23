@@ -19,8 +19,7 @@ import java.util.List;
    @Autowired
    private OrderRepository repository;
    
-   @Autowired
-   private UserRepository repository1;
+  
 
    //get 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
@@ -44,10 +43,9 @@ import java.util.List;
 	@RequestMapping(value = "/", method = RequestMethod.POST)
 	  public Order createOrder(@Valid @RequestBody Order order) {
 	   order.set_id(ObjectId.get());
-	   //User user=new User();
-	   //user=order.getuser().get_id();
+	  
 	   repository.save(order);
-	   //repository1.save();
+	   
 	   return order;
 	  }
 	
