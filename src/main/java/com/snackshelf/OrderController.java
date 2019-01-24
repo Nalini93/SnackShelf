@@ -11,14 +11,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import javax.validation.Valid;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @RestController
-@RequestMapping("/order")
+@RequestMapping("/orders")
   public class OrderController {
    @Autowired
    private OrderRepository repository;
-   
+   @Autowired
+   private UserRepository repository1;
+   @Autowired
+   private ProductRepository repository2;
   
 
    //get 
@@ -34,18 +40,62 @@ import java.util.List;
 	
 	//PUT
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	  public void modifyOrderById(@PathVariable("id") ObjectId id, @Valid @RequestBody Order order) {
+	  public void modifyOrderById(@PathVariable("id") ObjectId id, @Valid @RequestBody Order order) throws OrderBadRequestException {
 	   order.set_id(id);
-	   repository.save(order);
+	   ArrayList<String> lista= new ArrayList<String>();
+	   ArrayList<String> lista2= new ArrayList<String>();
+	   ArrayList<String> lista3= new ArrayList<String>();
+	   
+	   for(User user: repository1.findAll()) {
+		   lista.add(user.get_id());  
+	   }
+	   for(Product product: repository2.findAll()) {
+		   lista2.add(product.get_id());
+	   }
+	   
+	   for(Order order1: repository.findAll()) {
+		   lista3.add(order1.get_id());  
+	   }
+	   if(order.getQuantity()<=0|| order.getTotal()<=0 || order.getuser()==null || order.getProduct()==null ) {
+		   throw new OrderBadRequestException();
+	   }else {
+		   if(lista.contains(order.getuser().get_id()) && lista2.contains(order.getProduct().get_id()) && lista3.contains(id.toHexString())) {
+		   		
+		   		repository.save(order);
+		   		
+		   	}else {  
+		   		
+		   		throw new OrderBadRequestException();
+		   	}
+	   }
 	  }
 	
 	//POST
 	@RequestMapping(value = "/", method = RequestMethod.POST)
-	  public Order createOrder(@Valid @RequestBody Order order) {
+	  public Order createOrder(@Valid @RequestBody Order order) throws OrderBadRequestException {
 	   order.set_id(ObjectId.get());
-	  
-	   repository.save(order);
+	   ArrayList<String> lista= new ArrayList<String>();
+	   ArrayList<String> lista2= new ArrayList<String>();
+	   for(User user: repository1.findAll()) {
+		   lista.add(user.get_id());  
+	   }
+	   for(Product product: repository2.findAll()) {
+		   lista2.add(product.get_id());
+	   }
+	   //System.out.println(lista);
 	   
+	  if(order.getQuantity()<=0|| order.getTotal()<=0 || order.getuser()==null || order.getProduct()==null) {
+		  throw new OrderBadRequestException();
+	   }else {
+		   	if(lista.contains(order.getuser().get_id()) && lista2.contains(order.getProduct().get_id())) {
+		   		
+		   		repository.save(order);
+		   		
+		   	}else {  
+		   		
+		   		throw new OrderBadRequestException();
+		   	}
+	   }
 	   return order;
 	  }
 	

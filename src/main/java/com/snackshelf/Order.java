@@ -34,8 +34,8 @@ public class Order {
 		this.total = total;
 	}
 
-	public ObjectId get_id() {
-		return _id;
+	public String get_id() {
+		return _id.toHexString();
 	}
 
 	public void set_id(ObjectId _id) {
@@ -48,6 +48,15 @@ public class Order {
 
 	public void setuser(User user) {
 		this.user = user;
+	}
+	
+
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
 	}
 
 	public int getQuantity() {
