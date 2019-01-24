@@ -1,8 +1,6 @@
 package com.snackshelf;
 
-import com.snackshelf.Order;
-import com.snackshelf.OrderRepository;
-
+import com.snackshelf.products.ProductRepository;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;

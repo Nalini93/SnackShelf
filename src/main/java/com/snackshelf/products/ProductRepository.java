@@ -1,5 +1,6 @@
-package com.snackshelf;
+package com.snackshelf.products;
 
+import com.snackshelf.products.Product;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.repository.MongoRepository;
 

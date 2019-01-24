@@ -24,7 +24,13 @@ public class UserController{
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public User getUserById(@PathVariable("id") ObjectId id){
    		System.out.println("GET");
-   		return repository.findBy_id(id);
+   		User user = repository.findBy_id(id);
+   		if(user == null){
+   			//Solleva eccezione
+		}else{
+
+		}
+   		return user;
    	}
 	
 	//PUT
@@ -36,15 +42,25 @@ public class UserController{
 	
 	//POST
 	@RequestMapping(value = "/", method = RequestMethod.POST)
-	public User createUser(@Valid @RequestBody User user) {
+	public User createUser(@Valid @RequestBody User user){
 		user.set_id(ObjectId.get());
-	   	repository.save(user);
+		if(user.getName() == null || user.getSurname() == null){
+			try{
+				throw new Exception();
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}else{
+			repository.save(user);
+		}
+	   	System.out.println(user.toString());
 	   	return user;
 	}
 	
 	//DELETE
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	public void deleteUser(@PathVariable ObjectId id) {
+	public void deleteUser(@PathVariable ObjectId id){
 		repository.delete(repository.findBy_id(id));
+		//System.out.println("Deleted: " + repository.findBy_id(id).toString());
 	}
 }

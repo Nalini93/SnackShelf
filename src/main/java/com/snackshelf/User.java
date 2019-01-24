@@ -8,19 +8,10 @@ import java.io.Serializable;
 
 @Document(collection = "users")
 public class User implements Serializable{
-
-
     @Id
     public ObjectId _id;
     public String name;
     public String surname;
-
-    // Constructors
-    public User(){}
-    public User(String name, String surname){
-        this.name = name;
-        this.surname= surname;
-    }
 
     public String get_id(){
         return _id.toHexString();
