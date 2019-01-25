@@ -42,6 +42,7 @@ gradle-app.setting
 .classpath
 .project
 bin/
+.springBeans
 # OS
 .DS_Store
 
