@@ -112,8 +112,7 @@ import java.util.List;
 	   repository.delete(repository.findBy_id(id));
 	  }else {
 		  throw new OrderNotFoundRequestException();
-	  }
-
-
+	  
 	}
 }
+ }
