@@ -28,17 +28,27 @@ public class ProductController{
     //GET
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public List getAllProducts(){
-        return repository.findAll();
+        if(repository.findAll().isEmpty()){
+            throw new ProductNotFoundException();
+        }else{
+            return repository.findAll();
+        }
     }
+
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public Product getProductById(@PathVariable("id") ObjectId id){
-        return repository.findBy_id(id);
+        if(iterateProducts(repository).contains(id.toHexString())){
+            return repository.findBy_id(id);
+        }else{
+            throw new ProductNotFoundException();
+        }
     }
 
     //PUT
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public void modifyProductById(@PathVariable("id") ObjectId id, @Valid @RequestBody Product product){
         product.setId(id);
+
         if(iterateProducts(repository).contains(id.toHexString())){
             execute(product);
             repository.save(product);
@@ -58,7 +68,12 @@ public class ProductController{
     //DELETE
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void deleteProduct(@PathVariable ObjectId id){
-        repository.delete(repository.findBy_id(id));
+        if(iterateProducts(repository).contains(id.toHexString())){
+            repository.delete(repository.findBy_id(id));
+            System.out.println("Product succesfully deleted");
+        }else{
+            throw new ProductNotFoundException();
+        }
     }
 
     //METHODS
@@ -89,7 +104,6 @@ public class ProductController{
         for(Product product : repo.findAll()){
             listID.add(product.getId());
         }
-        System.out.println(listID);
         return listID;
     }
 }

@@ -2,15 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="79e0b377-5e38-4a45-a39b-ed02761ebca1" name="Default Changelist" comment="&quot;Completion of Product-Controller&quot;">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/snackshelf/products/Product.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/snackshelf/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/snackshelf/OrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/snackshelf/Product.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/snackshelf/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/snackshelf/products/ProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/snackshelf/ProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/snackshelf/products/ProductRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/snackshelf/DebugClass.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/snackshelf/SnackShelfApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/snackshelf/SnackShelfApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/snackshelf/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/snackshelf/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/snackshelf/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/snackshelf/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/snackshelf/products/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/snackshelf/products/ProductController.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -48,33 +43,26 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/snackshelf/products/ProductController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="434">
-              <caret line="59" column="4" lean-forward="true" selection-start-line="59" selection-start-column="4" selection-end-line="59" selection-end-column="4" />
-              <folding>
-                <element signature="e#2359#2360#0" expanded="true" />
-                <element signature="e#2418#2419#0" expanded="true" />
-              </folding>
+            <state>
+              <caret lean-forward="true" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/snackshelf/DebugClass.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/snackshelf/SnackShelfApplication.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="392">
-              <caret line="38" selection-start-line="38" selection-end-line="38" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state>
+              <caret lean-forward="true" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/snackshelf/productException/ProductBadRequestException.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/snackshelf/productException/ProductNotFoundException.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="126">
-              <caret line="6" column="66" selection-start-line="6" selection-start-column="66" selection-end-line="6" selection-end-column="66" />
+              <caret line="6" column="64" lean-forward="true" selection-start-line="6" selection-start-column="64" selection-end-line="6" selection-end-column="64" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -85,14 +73,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/snackshelf/products/Product.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="796">
-              <caret line="68" column="1" lean-forward="true" selection-start-line="68" selection-start-column="1" selection-end-line="68" selection-end-column="1" />
-              <folding>
-                <element signature="e#573#574#0" expanded="true" />
-                <element signature="e#613#614#0" expanded="true" />
-                <element signature="e#664#665#0" expanded="true" />
-                <element signature="e#694#695#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="189">
+              <caret line="16" selection-start-line="16" selection-end-line="16" />
             </state>
           </provider>
         </entry>
@@ -124,21 +106,23 @@
         <option value="$PROJECT_DIR$/src/main/java/com/snackshelf/User.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/snackshelf/UserController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/snackshelf/ProductNotFoundException.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/snackshelf/productException/ProductNotFoundException.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/snackshelf/Product.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/snackshelf/ProductController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/snackshelf/productException/ProductBadRequestException.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/snackshelf/productException/ProductClass.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/snackshelf/products/Product.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/snackshelf/SnackShelfApplication.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/snackshelf/productException/ProductDate.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/snackshelf/DebugClass.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/snackshelf/extras/GeneriClass.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/snackshelf/productException/ProductNotFoundException.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/snackshelf/products/ProductController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/snackshelf/extras/GenericClass.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/snackshelf/SnackShelfApplication.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="949" />
+    <option name="x" value="-11" />
     <option name="width" value="980" />
     <option name="height" value="1031" />
   </component>
@@ -182,31 +166,6 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="snackshelf" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="SnackShelf" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SnackShelf" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="snackshelf" type="462c0819:PsiDirectoryNode" />
-              <item name="productException" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SnackShelf" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SnackShelf" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="snackshelf" type="462c0819:PsiDirectoryNode" />
-              <item name="products" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SnackShelf" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SnackShelf" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -214,7 +173,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548345243550" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548408823437" />
     <property name="settings.editor.selected.configurable" value="MTConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -301,7 +260,7 @@
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17489879" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2728745" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -310,7 +269,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.7113594" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.24767226" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.94413406" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -415,16 +374,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/snackshelf/productException/ProductNotFoundException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="6" column="64" lean-forward="true" selection-start-line="6" selection-start-column="64" selection-end-line="6" selection-end-column="64" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/snackshelf/products/ProductRepository.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
@@ -432,13 +381,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/snackshelf/SnackShelfApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="98">
-          <caret line="44" column="52" selection-start-line="44" selection-start-column="52" selection-end-line="44" selection-end-column="52" />
         </state>
       </provider>
     </entry>
@@ -460,10 +402,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/snackshelf/DebugClass.java">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="392">
-          <caret line="38" selection-start-line="38" selection-end-line="38" />
+        <state relative-caret-position="457">
+          <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/snackshelf/products/Product.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/snackshelf/extras/GenericClass.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="17" column="21" lean-forward="true" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
+          <folding>
+            <element signature="e#189#190#0" expanded="true" />
+            <element signature="e#210#211#0" expanded="true" />
+            <element signature="e#245#246#0" expanded="true" />
+            <element signature="e#271#272#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/snackshelf/productException/ProductNotFoundException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="6" column="64" lean-forward="true" selection-start-line="6" selection-start-column="64" selection-end-line="6" selection-end-column="64" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -473,34 +442,34 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/snackshelf/productException/ProductBadRequestException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
-          <caret line="6" column="66" selection-start-line="6" selection-start-column="66" selection-end-line="6" selection-end-column="66" />
+          <caret line="6" column="29" selection-start-line="6" selection-start-column="29" selection-end-line="6" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/snackshelf/products/Product.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/snackshelf/DebugClass.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="796">
-          <caret line="68" column="1" lean-forward="true" selection-start-line="68" selection-start-column="1" selection-end-line="68" selection-end-column="1" />
+        <state relative-caret-position="190">
+          <caret line="38" selection-start-line="38" selection-end-line="38" />
           <folding>
-            <element signature="e#573#574#0" expanded="true" />
-            <element signature="e#613#614#0" expanded="true" />
-            <element signature="e#664#665#0" expanded="true" />
-            <element signature="e#694#695#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/snackshelf/SnackShelfApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret lean-forward="true" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/snackshelf/products/ProductController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="434">
-          <caret line="59" column="4" lean-forward="true" selection-start-line="59" selection-start-column="4" selection-end-line="59" selection-end-column="4" />
-          <folding>
-            <element signature="e#2359#2360#0" expanded="true" />
-            <element signature="e#2418#2419#0" expanded="true" />
-          </folding>
+        <state>
+          <caret lean-forward="true" />
         </state>
       </provider>
     </entry>
