@@ -1,11 +1,11 @@
 package com.snackshelf;
+
+import com.snackshelf.products.Product;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
-import com.snackshelf.User;
 import org.springframework.data.mongodb.core.mapping.DBRef;
-import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
-
+import org.springframework.data.mongodb.core.mapping.Document;
 import java.io.Serializable;
 
 @Document(collection = "orders")
@@ -18,13 +18,25 @@ public class Order implements Serializable{
 	@Field("users")
 	public User user;
 
-	public Order(){}
-	public Order(int quantity, double total){
+	@DBRef
+	@Field("products")
+	public Product product;
+ 
+	public Order() {
+		
+	}
+ 
+	public Order(User user,Product product, int quantity, double total) {
+		
+		
+		this.user = user;
+		this.product=product;
 		this.quantity = quantity;
 		this.total = total;
 	}
-	public ObjectId get_id() {
-		return _id;
+
+	public String get_id() {
+		return _id.toHexString();
 	}
 	public void set_id(ObjectId _id) {
 		this._id = _id;
@@ -35,6 +47,15 @@ public class Order implements Serializable{
 	public void setuser(User user) {
 		this.user = user;
 	}
+
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
+
 	public int getQuantity() {
 		return quantity;
 	}
@@ -50,6 +71,7 @@ public class Order implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Order [_id=" + _id + ", quantity=" + quantity + ", total=" + total + ", user=" + user + "]";
+		return "Order [_id=" + _id + ", quantity=" + quantity + ", total=" + total + ", user=" + user + ", product="
+				+ product + "]";
 	}
 }
