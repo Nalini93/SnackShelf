@@ -7,6 +7,7 @@ import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Field;
 import org.springframework.data.mongodb.core.mapping.Document;
 import java.io.Serializable;
+import com.snackshelf.*;
 
 @Document(collection = "orders")
 public class Order implements Serializable{
