@@ -1,4 +1,4 @@
-package com.snackshelf;
+package com.snackshelf.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

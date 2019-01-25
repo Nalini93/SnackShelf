@@ -1,5 +1,7 @@
-package com.snackshelf;
+package com.snackshelf.users;
 
+import com.snackshelf.exception.UserBadRequestException;
+import com.snackshelf.exception.UserNotFoundRequestException;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,7 +24,7 @@ import java.util.List;
    //get 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	
-	public List getAllUsers() throws UserNotFoundRequestException {
+	public List getAllUsers() throws UserNotFoundRequestException{
 		if(repository.findAll().isEmpty()) {
 			throw new UserNotFoundRequestException();
 		}else

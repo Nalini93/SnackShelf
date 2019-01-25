@@ -1,4 +1,4 @@
-package com.snackshelf.productException;
+package com.snackshelf.products;
 
 import com.snackshelf.products.Product;
 
