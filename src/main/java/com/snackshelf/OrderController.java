@@ -30,12 +30,24 @@ import java.util.List;
    //get 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	
-	public List getAllOrders() {
+	public List getAllOrders() throws OrderNotFoundRequestException {
+		if(repository.findAll().isEmpty()) {
+			throw new OrderNotFoundRequestException();
+		}else {
 	 return repository.findAll();
+		}
 	}
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	 public Order getOrderById(@PathVariable("id") ObjectId id) {
+	 public Order getOrderById(@PathVariable("id") ObjectId id) throws OrderBadRequestException {
+		ArrayList<String> lista3= new ArrayList<String>();
+		for(Order order1: repository.findAll()) {
+			   lista3.add(order1.get_id());  
+		   }
+		if(lista3.contains(id)) {
 	  return repository.findBy_id(id);
+		}else {
+			throw new OrderBadRequestException();
+		}
 	 }
 	
 	//PUT
@@ -101,10 +113,17 @@ import java.util.List;
 	
 	//DELETE
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	  public void deleteOrder(@PathVariable ObjectId id) {
+	  public void deleteOrder(@PathVariable ObjectId id) throws OrderNotFoundRequestException {
+		ArrayList<String> lista3= new ArrayList<String>();
+		for(Order order1: repository.findAll()) {
+			   lista3.add(order1.get_id());  
+		   }
+		if(lista3.contains(id)) {
 	   repository.delete(repository.findBy_id(id));
+	  }else {
+		  throw new OrderNotFoundRequestException();
 	  }
 
 
-	
+	}
 }

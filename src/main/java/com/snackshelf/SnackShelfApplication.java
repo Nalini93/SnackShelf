@@ -34,7 +34,7 @@ public class SnackShelfApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		//ArrayList users= new ArrayList();
-		//repository.deleteAll();
+		repository.deleteAll();
 		//users.add(new User("John","Smith"));
 		//repository.saveAll(users);
 		

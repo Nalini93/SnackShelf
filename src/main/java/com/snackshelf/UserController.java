@@ -24,13 +24,23 @@ import java.util.List;
    //get 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	
-	public List getAllUsers() {
+	public List getAllUsers() throws UserNotFoundRequestException {
+		if(repository.findAll().isEmpty()) {
+			throw new UserNotFoundRequestException();
+		}else
 	 return repository.findAll();
 	}
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	 public User getUserById(@PathVariable("id") ObjectId id) {
-	  
+	 public User getUserById(@PathVariable("id") ObjectId id) throws UserNotFoundRequestException {
+		ArrayList<String> lista= new ArrayList<String>();
+		   for(User user1: repository.findAll()) {
+			   lista.add(user1.get_id());  
+		   }
+		   if(lista.contains(id)) {
 		return repository.findBy_id(id);
+		   }else {
+			   throw new UserNotFoundRequestException();
+		   }
 	 }
 	
 	//PUT
@@ -65,10 +75,15 @@ import java.util.List;
 	
 	//DELETE
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	  public void deleteUser(@PathVariable ObjectId id) {
+	  public void deleteUser(@PathVariable ObjectId id) throws UserNotFoundRequestException {
+		ArrayList<String> lista= new ArrayList<String>();
+		   for(User user1: repository.findAll()) {
+			   lista.add(user1.get_id());  
+		   }
+		   if(lista.contains(id)) {
 	   repository.delete(repository.findBy_id(id));
+	  }else {
+		  throw new UserNotFoundRequestException();
 	  }
-
-
-	
+	}
 }
