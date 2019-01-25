@@ -1,8 +1,5 @@
 package com.snackshelf;
 
-import com.snackshelf.User;
-import com.snackshelf.UserRepository;
-
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+
 @RequestMapping("/users")
   public class UserController {
    @Autowired

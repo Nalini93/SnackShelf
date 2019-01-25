@@ -1,23 +1,17 @@
 package com.snackshelf;
 
-import com.snackshelf.Order;
-import com.snackshelf.OrderRepository;
-
+import com.snackshelf.products.ProductRepository;
+import com.snackshelf.products.Product;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
 import javax.validation.Valid;
-
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-@RestController
-@RequestMapping("/orders")
   public class OrderController {
    @Autowired
    private OrderRepository repository;
@@ -62,21 +56,18 @@ import java.util.List;
 		   lista.add(user.get_id());  
 	   }
 	   for(Product product: repository2.findAll()) {
-		   lista2.add(product.get_id());
+		   lista2.add(product.getId());
 	   }
 	   
 	   for(Order order1: repository.findAll()) {
-		   lista3.add(order1.get_id());  
+		   lista3.add(order1.get_id());
 	   }
 	   if(order.getQuantity()<=0|| order.getTotal()<=0 || order.getuser()==null || order.getProduct()==null ) {
 		   throw new OrderBadRequestException();
 	   }else {
-		   if(lista.contains(order.getuser().get_id()) && lista2.contains(order.getProduct().get_id()) && lista3.contains(id.toHexString())) {
-		   		
+		   if(lista.contains(order.getuser().get_id()) && lista2.contains(order.getProduct().getId()) && lista3.contains(id.toHexString())) {
 		   		repository.save(order);
-		   		
-		   	}else {  
-		   		
+		   	}else {
 		   		throw new OrderBadRequestException();
 		   	}
 	   }
@@ -92,14 +83,14 @@ import java.util.List;
 		   lista.add(user.get_id());  
 	   }
 	   for(Product product: repository2.findAll()) {
-		   lista2.add(product.get_id());
+		   lista2.add(product.getId());
 	   }
 	   //System.out.println(lista);
 	   
 	  if(order.getQuantity()<=0|| order.getTotal()<=0 || order.getuser()==null || order.getProduct()==null) {
 		  throw new OrderBadRequestException();
 	   }else {
-		   	if(lista.contains(order.getuser().get_id()) && lista2.contains(order.getProduct().get_id())) {
+		   	if(lista.contains(order.getuser().get_id()) && lista2.contains(order.getProduct().getId())) {
 		   		
 		   		repository.save(order);
 		   		
