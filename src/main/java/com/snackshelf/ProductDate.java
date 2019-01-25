@@ -1,9 +1,5 @@
-package com.snackshelf.products;
+package com.snackshelf;
 
-import com.snackshelf.products.Product;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class ProductDate{
