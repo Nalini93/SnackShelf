@@ -1,5 +1,4 @@
-package com.snackshelf.orders;
-import com.snackshelf.orders.Order;
+package com.snackshelf;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.repository.MongoRepository;
 

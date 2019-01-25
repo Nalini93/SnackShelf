@@ -1,15 +1,11 @@
-package com.snackshelf.products;
+package com.snackshelf;
 
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
-import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.io.Serializable;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-
-public class Product implements Serializable{
+@Document(collection = "products")
+public class Product{
     @Id
     public ObjectId _id;
     public String type, productName, companyName, productionDate, expirationDate;

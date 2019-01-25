@@ -1,7 +1,7 @@
-package com.snackshelf.orders;
+package com.snackshelf;
 
-import com.snackshelf.users.User;
-import com.snackshelf.products.Product;
+import com.snackshelf.User;
+import com.snackshelf.Product;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
