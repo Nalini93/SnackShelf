@@ -1,0 +1,218 @@
+{
+	"info": {
+		"_postman_id": "3448459d-2987-4b8e-9339-4d54da615d46",
+		"name": "ORDERS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "read all orders",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "ddfe8328-488c-43cb-b399-89564143f2f4",
+						"exec": [
+							"pm.globals.set(\"id\", \"\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/orders/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"orders",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create order",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"user\": {\n        \t\"_id\" : \"5c49cb6ade0d1665cad33cbb\"\n        },\n        \"product\": {\n        \t\"_id\" : \"5c49d565de0d1665fd6ed3eb\"\n        },\n        \"quantity\": 1,\n        \"total\": 35.6\n    }"
+				},
+				"url": {
+					"raw": "http://localhost:8080/orders/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"orders",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update order",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "a8a55835-4fed-469a-bbae-89825d2e9f31",
+						"exec": [
+							"pm.globals.set(\"id\", \"5c49d8a1de0d1666124eb0f7\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"user\": {\n        \t\"_id\" : \"5c49cb6ade0d1665cad33cbb\"\n        },\n        \"product\": {\n        \t\"_id\" : \"5c49d565de0d1665fd6ed3eb\"\n        },\n        \"quantity\": 1,\n        \"total\": 35.6\n    }"
+				},
+				"url": {
+					"raw": "http://localhost:8080/orders/{{id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"orders",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete order",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "a8a55835-4fed-469a-bbae-89825d2e9f31",
+						"exec": [
+							"pm.environment.set(\"id\", \"5c49c9d9de0d1665a19ebc53\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/orders/{{id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"orders",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "read order",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "a8a55835-4fed-469a-bbae-89825d2e9f31",
+						"exec": [
+							"pm.environment.set(\"id\", \"5c49c1f1de0d1665a19ebc4f\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/orders/{{id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"orders",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
