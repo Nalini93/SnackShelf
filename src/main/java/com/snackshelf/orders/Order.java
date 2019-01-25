@@ -1,5 +1,6 @@
-package com.snackshelf;
+package com.snackshelf.orders;
 
+import com.snackshelf.users.User;
 import com.snackshelf.products.Product;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
@@ -27,8 +28,6 @@ public class Order implements Serializable{
 	}
  
 	public Order(User user,Product product, int quantity, double total) {
-		
-		
 		this.user = user;
 		this.product=product;
 		this.quantity = quantity;

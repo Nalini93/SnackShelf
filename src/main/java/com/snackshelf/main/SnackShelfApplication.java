@@ -1,5 +1,7 @@
-package com.snackshelf;
+package com.snackshelf.main;
 
+import com.snackshelf.users.User;
+import com.snackshelf.users.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;

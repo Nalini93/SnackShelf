@@ -1,23 +1,19 @@
 {
 	"info": {
-		"_postman_id": "3448459d-2987-4b8e-9339-4d54da615d46",
-		"name": "Orders",
+		"_postman_id": "2e7a0a4e-c1be-45a4-8038-c40f31ed78bf",
+		"name": "PRODUCTS",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "http://localhost:8080/order/",
+			"name": "getProduct",
 			"event": [
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "ddfe8328-488c-43cb-b399-89564143f2f4",
+						"id": "f6f5c02c-b7ea-45e2-a825-1a986724e77b",
 						"exec": [
-							"pm.globals.set(\"id\", \"20\");",
-							"console.log(\"id\");",
-							"pm.sendRequest(\"user\", function (err, response){",
-							"    console.log(response.json());",
-							"});"
+							"pm.globals.set(\"id\", \"\");"
 						],
 						"type": "text/javascript"
 					}
@@ -32,53 +28,23 @@
 					{
 						"key": "Content-Type",
 						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
+						"type": "text",
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\n}"
+					"raw": ""
 				},
 				"url": {
-					"raw": "http://localhost:8080/order",
+					"raw": "http://localhost:8080/products/",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"order"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "http://localhost:8080/order/",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\n}"
-				},
-				"url": {
-					"raw": "http://localhost:8080/order/",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"order",
+						"products",
 						""
 					]
 				}
@@ -86,14 +52,60 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:8080/order/{{id}}",
+			"name": "getProductId",
 			"event": [
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "a8a55835-4fed-469a-bbae-89825d2e9f31",
+						"id": "f6f5c02c-b7ea-45e2-a825-1a986724e77b",
 						"exec": [
-							""
+							"pm.globals.set(\"id\", \"\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/products/{{id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "putProduct",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "f6f5c02c-b7ea-45e2-a825-1a986724e77b",
+						"exec": [
+							"pm.globals.set(\"id\", \"5c49d40743db561dfc43df87\");"
 						],
 						"type": "text/javascript"
 					}
@@ -105,23 +117,23 @@
 					{
 						"key": "Content-Type",
 						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
+						"type": "text",
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\n}"
+					"raw": "{\n\t\"type\" : \"Pasta\",\n\t\"productName\" :\"Farfalle\",\n\t\"companyName\" : \"Barilla\",\n\t\"productionDate\" : \"20/04/2018\",\n\t\"expirationDate\" : \"20/05/2018\",\n\t\"price\" : \"2.0\"\n}"
 				},
 				"url": {
-					"raw": "http://localhost:8080/order/{{id}}",
+					"raw": "http://localhost:8080/products/{{id}}",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"order",
+						"products",
 						"{{id}}"
 					]
 				}
@@ -129,14 +141,57 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:8080/order/{{id}}",
+			"name": "postProduct",
 			"event": [
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "a8a55835-4fed-469a-bbae-89825d2e9f31",
+						"id": "f6f5c02c-b7ea-45e2-a825-1a986724e77b",
 						"exec": [
 							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"type\" : \"Pasta\",\n\t\"productName\" :\"Farfalle\",\n\t\"companyName\" : \"Barilla\",\n\t\"productionDate\" : \"20/04/2018\",\n\t\"expirationDate\" : \"20/05/2018\",\n\t\"price\" : \"2.0\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/products/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteProduct",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "f6f5c02c-b7ea-45e2-a825-1a986724e77b",
+						"exec": [
+							"pm.globals.set(\"id\", \"\");"
 						],
 						"type": "text/javascript"
 					}
@@ -148,69 +203,23 @@
 					{
 						"key": "Content-Type",
 						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
+						"type": "text",
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\n}"
+					"raw": ""
 				},
 				"url": {
-					"raw": "http://localhost:8080/order/{{id}}",
+					"raw": "http://localhost:8080/products/{{id}}",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"order",
-						"{{id}}"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "http://localhost:8080/order/{{id}}",
-			"event": [
-				{
-					"listen": "prerequest",
-					"script": {
-						"id": "a8a55835-4fed-469a-bbae-89825d2e9f31",
-						"exec": [
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\n}"
-				},
-				"url": {
-					"raw": "http://localhost:8080/order/{{id}}",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"order",
+						"products",
 						"{{id}}"
 					]
 				}

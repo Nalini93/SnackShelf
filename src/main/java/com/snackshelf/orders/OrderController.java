@@ -1,7 +1,11 @@
-package com.snackshelf;
+package com.snackshelf.orders;
 
+import com.snackshelf.exception.OrderBadRequestException;
+import com.snackshelf.exception.OrderNotFoundRequestException;
 import com.snackshelf.products.ProductRepository;
 import com.snackshelf.products.Product;
+import com.snackshelf.users.User;
+import com.snackshelf.users.UserRepository;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,7 +28,7 @@ import java.util.List;
    //get 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	
-	public List getAllOrders() throws OrderNotFoundRequestException {
+	public List getAllOrders() throws OrderNotFoundRequestException{
 		if(repository.findAll().isEmpty()) {
 			throw new OrderNotFoundRequestException();
 		}else {
@@ -32,7 +36,7 @@ import java.util.List;
 		}
 	}
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	 public Order getOrderById(@PathVariable("id") ObjectId id) throws OrderBadRequestException {
+	 public Order getOrderById(@PathVariable("id") ObjectId id) throws OrderBadRequestException{
 		ArrayList<String> lista3= new ArrayList<String>();
 		for(Order order1: repository.findAll()) {
 			   lista3.add(order1.get_id());  
@@ -58,7 +62,6 @@ import java.util.List;
 	   for(Product product: repository2.findAll()) {
 		   lista2.add(product.getId());
 	   }
-	   
 	   for(Order order1: repository.findAll()) {
 		   lista3.add(order1.get_id());
 	   }
@@ -85,17 +88,13 @@ import java.util.List;
 	   for(Product product: repository2.findAll()) {
 		   lista2.add(product.getId());
 	   }
-	   //System.out.println(lista);
-	   
+
 	  if(order.getQuantity()<=0|| order.getTotal()<=0 || order.getuser()==null || order.getProduct()==null) {
 		  throw new OrderBadRequestException();
 	   }else {
 		   	if(lista.contains(order.getuser().get_id()) && lista2.contains(order.getProduct().getId())) {
-		   		
 		   		repository.save(order);
-		   		
-		   	}else {  
-		   		
+		   	}else {
 		   		throw new OrderBadRequestException();
 		   	}
 	   }
