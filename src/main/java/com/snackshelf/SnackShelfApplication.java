@@ -24,13 +24,17 @@ public class SnackShelfApplication implements CommandLineRunner {
 
 	@Autowired
 	private OrderRepository repository1;
+	
+	@Autowired
+	private ProductRepository repository2;
+	
 	public static void main(String[] args) {
 		SpringApplication.run(SnackShelfApplication.class, args);
 	}
 	@Override
 	public void run(String... args) throws Exception {
 		//ArrayList users= new ArrayList();
-		//repository.deleteAll();
+		repository.deleteAll();
 		//users.add(new User("John","Smith"));
 		//repository.saveAll(users);
 		
@@ -49,6 +53,12 @@ public class SnackShelfApplication implements CommandLineRunner {
 		System.out.println("-------------------------------");
 		for (Order order : repository1.findAll()) {
 			System.out.println(order);
+		}
+		
+		System.out.println("Products found with findAll():");
+		System.out.println("-------------------------------");
+		for (Product product : repository2.findAll()) {
+			System.out.println(product);
 		}
 		
 	}
