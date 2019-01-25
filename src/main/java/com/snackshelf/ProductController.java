@@ -1,7 +1,5 @@
-package com.snackshelf.products;
+package com.snackshelf;
 
-import com.snackshelf.exception.ProductBadRequestException;
-import com.snackshelf.exception.ProductNotFoundException;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;

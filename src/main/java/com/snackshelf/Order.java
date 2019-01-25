@@ -1,16 +1,15 @@
-package com.snackshelf.orders;
+package com.snackshelf;
 
-import com.snackshelf.users.User;
-import com.snackshelf.products.Product;
+import com.snackshelf.User;
+import com.snackshelf.Product;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Field;
 import org.springframework.data.mongodb.core.mapping.Document;
-import java.io.Serializable;
 
 @Document(collection = "orders")
-public class Order implements Serializable{
+public class Order{
 	@Id
 	public ObjectId _id;
 	public int quantity;

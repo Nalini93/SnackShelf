@@ -1,21 +1,15 @@
-package com.snackshelf.orders;
+package com.snackshelf;
 
-import com.snackshelf.exception.OrderBadRequestException;
-import com.snackshelf.exception.OrderNotFoundRequestException;
-import com.snackshelf.products.ProductRepository;
-import com.snackshelf.products.Product;
-import com.snackshelf.users.User;
-import com.snackshelf.users.UserRepository;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
+
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
+@RestController
+@RequestMapping("/orders")
   public class OrderController {
    @Autowired
    private OrderRepository repository;
@@ -29,7 +23,7 @@ import java.util.List;
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	
 	public List getAllOrders() throws OrderNotFoundRequestException{
-		if(repository.findAll().isEmpty()) {
+		if(repository.findAll().isEmpty()){
 			throw new OrderNotFoundRequestException();
 		}else {
 	 return repository.findAll();
@@ -41,9 +35,9 @@ import java.util.List;
 		for(Order order1: repository.findAll()) {
 			   lista3.add(order1.get_id());  
 		   }
-		if(lista3.contains(id)) {
-	  return repository.findBy_id(id);
-		}else {
+		if(lista3.contains(id.toHexString())){
+	  		return repository.findBy_id(id);
+		}else{
 			throw new OrderBadRequestException();
 		}
 	 }
@@ -108,7 +102,7 @@ import java.util.List;
 		for(Order order1: repository.findAll()) {
 			   lista3.add(order1.get_id());  
 		   }
-		if(lista3.contains(id)) {
+		if(lista3.contains(id.toHexString())) {
 	   repository.delete(repository.findBy_id(id));
 	  }else {
 		  throw new OrderNotFoundRequestException();

@@ -1,7 +1,5 @@
-package com.snackshelf.users;
+package com.snackshelf;
 
-import com.snackshelf.exception.UserBadRequestException;
-import com.snackshelf.exception.UserNotFoundRequestException;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,7 +15,7 @@ import java.util.List;
 @RestController
 
 @RequestMapping("/users")
-  public class UserController {
+  public class UserController{
    @Autowired
    private UserRepository repository;
 
@@ -36,8 +34,8 @@ import java.util.List;
 		   for(User user1: repository.findAll()) {
 			   lista.add(user1.get_id());  
 		   }
-		   if(lista.contains(id)) {
-		return repository.findBy_id(id);
+		   if(lista.contains(id.toHexString())) {
+				return repository.findBy_id(id);
 		   }else {
 			   throw new UserNotFoundRequestException();
 		   }
@@ -63,13 +61,14 @@ import java.util.List;
 	
 	//POST
 	@RequestMapping(value = "/", method = RequestMethod.POST)
-	  public User createUser(@Valid @RequestBody User user) throws UserBadRequestException {
+	  public User createUser(@Valid @RequestBody User user) throws UserBadRequestException{
 	   user.set_id(ObjectId.get());
-	   if(user.getName()==null|| user.getSurname()==null)  {
+	   if(user.getName()==null|| user.getSurname()==null){
 		   throw new UserBadRequestException();
-		}else {
-	   repository.save(user);
-	   }
+		}else{
+	   		System.out.println("prova");
+	   		repository.save(user);
+	   	}
 	   return user;
 	  }
 	
@@ -80,9 +79,9 @@ import java.util.List;
 		   for(User user1: repository.findAll()) {
 			   lista.add(user1.get_id());  
 		   }
-		   if(lista.contains(id)) {
-	   repository.delete(repository.findBy_id(id));
-	  }else {
+		   if(lista.contains(id.toHexString())) {
+		   	repository.delete(repository.findBy_id(id));
+		   }else {
 		  throw new UserNotFoundRequestException();
 	  }
 	}
