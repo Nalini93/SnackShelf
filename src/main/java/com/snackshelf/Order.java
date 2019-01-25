@@ -7,9 +7,11 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Field;
 import org.springframework.data.mongodb.core.mapping.Document;
+import java.io.Serializable;
+import com.snackshelf.*;
 
 @Document(collection = "orders")
-public class Order{
+public class Order implements Serializable{
 	@Id
 	public ObjectId _id;
 	public int quantity;

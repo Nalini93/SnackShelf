@@ -2,27 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="79e0b377-5e38-4a45-a39b-ed02761ebca1" name="Default Changelist" comment="&quot;Completion of Product-Controller&quot;">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exportjson/Orders.postman_collection.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/exportjson/PRODUCT.postman_collection.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/exportjson/USER.postman_collection.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/snackshelf/exception/OrderBadRequestException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/snackshelf/OrderBadRequestException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/snackshelf/exception/OrderNotFoundRequestException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/snackshelf/OrderNotFoundRequestException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/snackshelf/exception/ProductBadRequestException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/snackshelf/ProductBadRequestException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/snackshelf/exception/ProductNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/snackshelf/ProductNotFoundException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/snackshelf/exception/UserBadRequestException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/snackshelf/UserBadRequestException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/snackshelf/exception/UserNotFoundRequestException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/snackshelf/UserNotFoundRequestException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/snackshelf/main/SnackShelfApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/snackshelf/SnackShelfApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/snackshelf/orders/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/snackshelf/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/snackshelf/orders/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/snackshelf/OrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/snackshelf/orders/OrderRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/snackshelf/OrderRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/snackshelf/products/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/snackshelf/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/snackshelf/products/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/snackshelf/ProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/snackshelf/products/ProductDate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/snackshelf/ProductDate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/snackshelf/products/ProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/snackshelf/ProductRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/snackshelf/users/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/snackshelf/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/snackshelf/users/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/snackshelf/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/snackshelf/users/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/snackshelf/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/snackshelf/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/snackshelf/Order.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -98,8 +80,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/snackshelf/Order.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="125">
-              <caret line="43" column="5" lean-forward="true" selection-start-line="43" selection-start-column="5" selection-end-line="43" selection-end-column="5" />
+            <state relative-caret-position="350">
+              <caret line="76" column="1" lean-forward="true" selection-start-line="76" selection-start-column="1" selection-end-line="76" selection-end-column="1" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -151,7 +136,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/snackshelf/User.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/snackshelf/products/ProductRepository.java" />
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/src/main/java/com/snackshelf/Order.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/snackshelf/products/ProductDate.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/snackshelf/users/UserRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/snackshelf/main/SnackShelfApplication.java" />
@@ -161,6 +145,7 @@
         <option value="$PROJECT_DIR$/src/main/java/com/snackshelf/users/UserController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/snackshelf/UserController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/snackshelf/OrderController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/snackshelf/Order.java" />
       </list>
     </option>
   </component>
@@ -175,48 +160,12 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="SnackShelf" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SnackShelf" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="SnackShelf" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SnackShelf" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SnackShelf" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SnackShelf" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="SnackShelf" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SnackShelf" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SnackShelf" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SnackShelf" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="snackshelf" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
+      <pane id="ProjectPane" />
       <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548432464623" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548433244347" />
     <property name="settings.editor.selected.configurable" value="MTConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -294,7 +243,7 @@
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2777328" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.2777328" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -323,6 +272,36 @@
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Gradle" order="8" weight="0.32955465" />
     </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2777328" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="Capture Tool" order="4" />
+      <window_info id="UI Designer" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.8156425" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.94413406" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Event Log" order="6" side_tool="true" weight="0.32902032" />
+      <window_info anchor="bottom" id="TODO" order="7" weight="0.5903166" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.72998136" />
+      <window_info anchor="bottom" id="Version Control" order="9" weight="0.32960895" />
+      <window_info anchor="bottom" id="Build" order="10" weight="0.7132216" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.43389198" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Maven" order="4" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="right" id="Capture Analysis" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Gradle" order="8" weight="0.32955465" />
+    </layout-to-restore>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="&quot;Creation of Product and ProductRepository&quot;" />
@@ -461,8 +440,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/snackshelf/Order.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="43" column="5" lean-forward="true" selection-start-line="43" selection-start-column="5" selection-end-line="43" selection-end-column="5" />
+        <state relative-caret-position="350">
+          <caret line="76" column="1" lean-forward="true" selection-start-line="76" selection-start-column="1" selection-end-line="76" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
