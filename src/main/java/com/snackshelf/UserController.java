@@ -18,7 +18,8 @@ import java.util.List;
   public class UserController{
    @Autowired
    private UserRepository repository;
-
+   @Autowired
+   private OrderRepository repository1;
    //get 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	
@@ -76,11 +77,17 @@ import java.util.List;
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	  public void deleteUser(@PathVariable ObjectId id) throws UserNotFoundRequestException {
 		ArrayList<String> lista= new ArrayList<String>();
+		
 		   for(User user1: repository.findAll()) {
 			   lista.add(user1.get_id());  
 		   }
 		   if(lista.contains(id.toHexString())) {
+			  
+			   for(Order order1: repository1.findByuser(repository.findBy_id(id))) {
+				   repository1.delete(order1);
+		   	}
 		   	repository.delete(repository.findBy_id(id));
+		   	
 		   }else {
 		  throw new UserNotFoundRequestException();
 	  }

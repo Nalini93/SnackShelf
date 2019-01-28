@@ -19,6 +19,8 @@ import java.util.List;
 public class ProductController{
     @Autowired
     private ProductRepository repository;
+    @Autowired
+    private OrderRepository repository1;
     private static final String DATE_REGEX = "^([0-2][0-9]||3[0-1])/(0[0-9]||1[0-2])/([0-9][0-9])?[0-9][0-9]$";
     private ProductDate productDate;
 
@@ -66,6 +68,9 @@ public class ProductController{
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void deleteProduct(@PathVariable ObjectId id){
         if(iterateProducts(repository).contains(id.toHexString())){
+        	for(Order order1: repository1.findByproduct(repository.findBy_id(id))) {
+				   repository1.delete(order1);
+        	}
             repository.delete(repository.findBy_id(id));
             System.out.println("Product succesfully deleted");
         }else{
