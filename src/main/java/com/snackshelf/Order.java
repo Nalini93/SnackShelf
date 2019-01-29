@@ -19,11 +19,11 @@ public class Order implements Serializable{
 	public ObjectId _id;
 	public int quantity;
 	public double total;
-	@DBRef
+	//@DBRef
 	@Field("users")
 	public User user;
 
-	@DBRef
+	//@DBRef
 	@Field("products")
 	public List<Product> products;
  

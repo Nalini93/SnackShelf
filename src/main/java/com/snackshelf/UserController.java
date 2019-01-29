@@ -84,9 +84,9 @@ import org.apache.commons.lang3.StringUtils;
 		   }
 		   if(lista.contains(id.toHexString())) {
 			  
-			   for(Order order1: repository1.findByuser(repository.findBy_id(id))) {
+			   /*for(Order order1: repository1.findByuser(repository.findBy_id(id))) {
 				   repository1.delete(order1);
-		   	}
+		   	}*/
 		   	repository.delete(repository.findBy_id(id));
 		   	
 		   }else {

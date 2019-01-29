@@ -31,50 +31,65 @@ import org.apache.commons.lang3.StringUtils;
 		}
 	}
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	 public Order getOrderById(@PathVariable("id") ObjectId id) throws OrderBadRequestException{
-		ArrayList<String> lista3= new ArrayList<String>();
+	 public Order getOrderById(@PathVariable("id") ObjectId id) throws OrderNotFoundRequestException{
+		/*ArrayList<String> lista3= new ArrayList<String>();
 		for(Order order1: repository.findAll()) {
 			   lista3.add(order1.get_id());  
-		   }
-		if(lista3.contains(id.toHexString())){
+		   }*/
+		if(repository.existsById(id.toHexString())){
 	  		return repository.findBy_id(id);
+	  		
 		}else{
-			throw new OrderBadRequestException();
+			throw new OrderNotFoundRequestException();
 		}
 	 }
 	
 	//PUT
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	  public void modifyOrderById(@PathVariable("id") ObjectId id, @Valid @RequestBody Order order) throws OrderBadRequestException {
+	  public void modifyOrderById(@PathVariable("id") ObjectId id, @Valid @RequestBody Order order) throws OrderBadRequestException, OrderNotFoundRequestException {
 	   order.set_id(id);
-	   ArrayList<String> lista= new ArrayList<String>();
+	   boolean productsexist= true;
+	   for(Product product1:order.getProducts())
+	   {
+		   if(!repository2.existsById(product1.getId().toString())) 
+			   //if(!repositoryprod.existsById(product1.getId().toString()))
+			   productsexist=false;
+		   
+	   }
+	   /*ArrayList<String> lista= new ArrayList<String>();
 	   ArrayList<String> lista2= new ArrayList<String>();
 	   ArrayList<String> lista3= new ArrayList<String>();
 	   
 	   for(User user: repository1.findAll()) {
 		   lista.add(user.get_id());  
 	   }
-	   for(Product product: repository2.findAll()) {
-		   lista2.add(product.getId());
-	   }
+	  
 	   for(Order order1: repository.findAll()) {
 		   lista3.add(order1.get_id());
-	   }
-	   if(order.getQuantity()<=0|| order.getTotal()<=0 || StringUtils.isEmpty(Integer.toString(order.getQuantity()))||StringUtils.isEmpty(Double.toString(order.getTotal()))||order.getuser()==null || order.getProducts()==null ) {
+	   }*/
+	   if(order.getQuantity()<=0|| order.getTotal()<=0 || StringUtils.isEmpty(Integer.toString(order.getQuantity()))||StringUtils.isEmpty(Double.toString(order.getTotal()))) {
 		   throw new OrderBadRequestException();
 	   }else {
-		   if(lista.contains(order.getuser().get_id()) /*&& lista2.contains(order.getProduct().get_id())*/ && lista3.contains(id.toHexString())) {
+		   if(repository1.existsById((order.getuser().get_id())) && productsexist && repository.existsById(id.toHexString())) {
 		   		repository.save(order);
 		   	}else {
-		   		throw new OrderBadRequestException();
+		   		throw new OrderNotFoundRequestException();
 		   	}
 	   }
 	  }
 	
 	//POST
 	@RequestMapping(value = "/", method = RequestMethod.POST)
-	  public Order createOrder(@Valid @RequestBody Order order) throws OrderBadRequestException {
+	  public Order createOrder(@Valid @RequestBody Order order) throws OrderBadRequestException, OrderNotFoundRequestException {
 	   order.set_id(ObjectId.get());
+	   boolean productsexist= true;
+	   for(Product product1:order.getProducts())
+	   {
+		   if(!repository2.existsById(product1.getId().toString())) 
+			   //if(!repositoryprod.existsById(product1.getId().toString()))
+			   productsexist=false;
+		   
+	   }
 	   //ArrayList<String> lista= new ArrayList<String>();
 	   //ArrayList<String> lista2= new ArrayList<String>();
 	   /*for(User user: repository1.findAll()) {
@@ -87,10 +102,10 @@ import org.apache.commons.lang3.StringUtils;
 	  if(order.getQuantity()<=0|| order.getTotal()<=0 || order.getuser()==null || order.getProducts()==null || StringUtils.isEmpty(Integer.toString(order.getQuantity()))||StringUtils.isEmpty(Double.toString(order.getTotal())) ) {
 		  throw new OrderBadRequestException();
 	   }else {
-		   	if(repository1.existsById(order.getuser().get_id())) {
+		   	if(repository1.existsById(order.getuser().get_id()) && productsexist) {
 		   		repository.save(order);
 		   	}else {
-		   		throw new OrderBadRequestException();
+		   		throw new OrderNotFoundRequestException();
 		   	}
 	   }
 	   return order;
@@ -99,11 +114,11 @@ import org.apache.commons.lang3.StringUtils;
 	//DELETE
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	  public void deleteOrder(@PathVariable ObjectId id) throws OrderNotFoundRequestException {
-		ArrayList<String> lista3= new ArrayList<String>();
+		/*ArrayList<String> lista3= new ArrayList<String>();
 		for(Order order1: repository.findAll()) {
 			   lista3.add(order1.get_id());  
-		   }
-		if(lista3.contains(id.toHexString())) {
+		   }*/
+		if(repository.existsById(id.toHexString())) {
 	   repository.delete(repository.findBy_id(id));
 	  }else {
 		  throw new OrderNotFoundRequestException();
