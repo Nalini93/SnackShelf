@@ -8,6 +8,9 @@ import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Field;
 import org.springframework.data.mongodb.core.mapping.Document;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
 import com.snackshelf.*;
 
 @Document(collection = "orders")
@@ -22,15 +25,15 @@ public class Order implements Serializable{
 
 	@DBRef
 	@Field("products")
-	public Product product;
+	public List<Product> products;
  
 	public Order() {
 		
 	}
  
-	public Order(User user,Product product, int quantity, double total) {
+	public Order(User user,List<Product> products, int quantity, double total) {
 		this.user = user;
-		this.product=product;
+		this.products=products;
 		this.quantity = quantity;
 		this.total = total;
 	}
@@ -48,12 +51,12 @@ public class Order implements Serializable{
 		this.user = user;
 	}
 
-	public Product getProduct() {
-		return product;
+	public List<Product> getProducts() {
+		return products;
 	}
 
-	public void setProduct(Product product) {
-		this.product = product;
+	public void setProducts(List<Product> products) {
+		this.products = products;
 	}
 
 	public int getQuantity() {
@@ -71,7 +74,9 @@ public class Order implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Order [_id=" + _id + ", quantity=" + quantity + ", total=" + total + ", user=" + user + ", product="
-				+ product + "]";
+		return "Order [_id=" + _id + ", quantity=" + quantity + ", total=" + total + ", user=" + user + ", products="
+				+ products + "]";
 	}
+
+	
 }

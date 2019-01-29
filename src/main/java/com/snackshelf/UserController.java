@@ -11,6 +11,7 @@ import javax.validation.Valid;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.apache.commons.lang3.StringUtils;
 
 @RestController
 
@@ -50,7 +51,7 @@ import java.util.List;
 	   for(User user1: repository.findAll()) {
 		   lista.add(user1.get_id());  
 	   }
-	   if(user.getName()==null|| user.getSurname()==null)  {
+	   if(StringUtils.isEmpty(user.getName())|| StringUtils.isEmpty(user.getSurname()))  {
 		   throw new UserBadRequestException(); 
 	   }else if(lista.contains(user.get_id())){
 	   
@@ -64,10 +65,10 @@ import java.util.List;
 	@RequestMapping(value = "/", method = RequestMethod.POST)
 	  public User createUser(@Valid @RequestBody User user) throws UserBadRequestException{
 	   user.set_id(ObjectId.get());
-	   if(user.getName()==null|| user.getSurname()==null){
+	   if(StringUtils.isEmpty(user.getName())|| StringUtils.isEmpty(user.getSurname())){
 		   throw new UserBadRequestException();
 		}else{
-	   		System.out.println("prova");
+	   		
 	   		repository.save(user);
 	   	}
 	   return user;

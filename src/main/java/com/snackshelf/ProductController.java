@@ -1,5 +1,6 @@
 package com.snackshelf;
 
+import org.apache.commons.lang3.StringUtils;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,8 +20,8 @@ import java.util.List;
 public class ProductController{
     @Autowired
     private ProductRepository repository;
-    @Autowired
-    private OrderRepository repository1;
+    /*@Autowired
+    private OrderRepository repository1;*/
     private static final String DATE_REGEX = "^([0-2][0-9]||3[0-1])/(0[0-9]||1[0-2])/([0-9][0-9])?[0-9][0-9]$";
     private ProductDate productDate;
 
@@ -48,11 +49,15 @@ public class ProductController{
     public void modifyProductById(@PathVariable("id") ObjectId id, @Valid @RequestBody Product product){
         product.setId(id);
 
+        if(StringUtils.isEmpty(product.getType())||StringUtils.isEmpty(product.getCompanyName())||StringUtils.isEmpty(product.getProductName())||StringUtils.isEmpty(product.getProductionDate())||StringUtils.isEmpty(product.getExpirationDate())||StringUtils.isEmpty(Double.toString(product.getPrice())) ) {
+ 		   throw new OrderBadRequestException();
+        }else {
         if(iterateProducts(repository).contains(id.toHexString())){
             execute(product);
             repository.save(product);
         }else{
             throw new ProductNotFoundException();
+        }
         }
     }
 
@@ -60,7 +65,11 @@ public class ProductController{
     @RequestMapping(value = "/", method = RequestMethod.POST)
     public Product createProduct(@Valid @RequestBody Product product) throws ProductNotFoundException{
         product.setId(ObjectId.get());
+        if(StringUtils.isEmpty(product.getType())||StringUtils.isEmpty(product.getCompanyName())||StringUtils.isEmpty(product.getProductName())||StringUtils.isEmpty(product.getProductionDate())||StringUtils.isEmpty(product.getExpirationDate())||StringUtils.isEmpty(Double.toString(product.getPrice())) ) {
+  		   throw new OrderBadRequestException();
+         }else {
         execute(product);
+         }
         return product;
     }
 
@@ -68,9 +77,9 @@ public class ProductController{
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void deleteProduct(@PathVariable ObjectId id){
         if(iterateProducts(repository).contains(id.toHexString())){
-        	for(Order order1: repository1.findByproduct(repository.findBy_id(id))) {
+        	/*for(Order order1: repository1.findByproduct(repository.findBy_id(id))) {
 				   repository1.delete(order1);
-        	}
+        	}*/
             repository.delete(repository.findBy_id(id));
             System.out.println("Product succesfully deleted");
         }else{
