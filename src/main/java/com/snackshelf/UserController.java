@@ -31,8 +31,8 @@ import org.apache.commons.lang3.StringUtils;
 	 return repository.findAll();
 	}
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	 public User getUserById(@PathVariable("id") ObjectId id) throws UserNotFoundRequestException {
-		ArrayList<String> lista= new ArrayList<String>();
+	 public User getUserById(@PathVariable("id") String id) throws UserNotFoundRequestException {
+		/*ArrayList<String> lista= new ArrayList<String>();
 		   for(User user1: repository.findAll()) {
 			   lista.add(user1.get_id());  
 		   }
@@ -40,25 +40,37 @@ import org.apache.commons.lang3.StringUtils;
 				return repository.findBy_id(id);
 		   }else {
 			   throw new UserNotFoundRequestException();
-		   }
+		   }*/
+		if(id.length()!=24) {
+			throw new UserNotFoundRequestException();
+		}else {
+		if(repository.existsById(id)){
+	  		return repository.findBy_id(new ObjectId(id));
+	  		
+		}else{
+			throw new UserNotFoundRequestException();
+		}
+		}
+
 	 }
 	
 	//PUT
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	  public void modifyUserById(@PathVariable("id") ObjectId id, @Valid @RequestBody User user) throws UserBadRequestException, UserNotFoundRequestException {
-	   user.set_id(id);
-	   ArrayList<String> lista= new ArrayList<String>();
-	   for(User user1: repository.findAll()) {
-		   lista.add(user1.get_id());  
-	   }
+	  public void modifyUserById(@PathVariable("id") String id, @Valid @RequestBody User user) throws UserBadRequestException, UserNotFoundRequestException {
+	  
+	   if(id.length()!=24) {
+			throw new UserNotFoundRequestException();
+		}else {
+			 user.set_id(new ObjectId(id));
 	   if(StringUtils.isEmpty(user.getName())|| StringUtils.isEmpty(user.getSurname()))  {
 		   throw new UserBadRequestException(); 
-	   }else if(lista.contains(user.get_id())){
+	   }else if(repository.existsById(id)){
 	   
 	   repository.save(user);
 	   }else {
 		   throw new UserNotFoundRequestException();
-	   }
+	   	}
+		}
 	  }
 	
 	//POST
@@ -76,21 +88,20 @@ import org.apache.commons.lang3.StringUtils;
 	
 	//DELETE
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	  public void deleteUser(@PathVariable ObjectId id) throws UserNotFoundRequestException {
-		ArrayList<String> lista= new ArrayList<String>();
+	  public void deleteUser(@PathVariable String id) throws UserNotFoundRequestException {
 		
-		   for(User user1: repository.findAll()) {
-			   lista.add(user1.get_id());  
-		   }
-		   if(lista.contains(id.toHexString())) {
-			  
+		 if(id.length()!=24) {
+				throw new UserNotFoundRequestException();
+		 }else {
+				if(repository.existsById(id)){ 
 			   /*for(Order order1: repository1.findByuser(repository.findBy_id(id))) {
 				   repository1.delete(order1);
 		   	}*/
-		   	repository.delete(repository.findBy_id(id));
+		   	repository.delete(repository.findBy_id(new ObjectId(id)));
 		   	
 		   }else {
 		  throw new UserNotFoundRequestException();
 	  }
+	}
 	}
 }

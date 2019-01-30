@@ -1,5 +1,7 @@
 package com.snackshelf;
 
+import java.util.Objects;
+
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -14,8 +16,13 @@ public class User{
     // Constructors
     public User(){
     }
-
-    public User(String name, String surname){
+  
+    
+    public User(ObjectId _id) {
+		
+		this._id = _id;
+	}
+	public User(String name, String surname){
         this.name = name;
         this.surname = surname;
     }
@@ -44,10 +51,23 @@ public class User{
     public void setSurname(String surname){
         this.surname = surname;
     }
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		User other = (User) obj;
+		return Objects.equals(_id, other._id) && Objects.equals(name, other.name)
+				&& Objects.equals(surname, other.surname);
+	}
 
-
-    @Override
+	@Override
     public String toString(){
         return "User [_id=" + _id + ", name=" + name + ", surname=" + surname + "]";
     }
+
+	
 }

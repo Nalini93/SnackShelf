@@ -36,29 +36,38 @@ public class ProductController{
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public Product getProductById(@PathVariable("id") ObjectId id){
-        if(iterateProducts(repository).contains(id.toHexString())){
-            return repository.findBy_id(id);
-        }else{
-            throw new ProductNotFoundException();
-        }
+    public Product getProductById(@PathVariable("id") String id){
+    	if(id.length()!=24) {
+			throw new ProductNotFoundException();
+		}else {
+		if(repository.existsById(id)){
+	  		return repository.findBy_id(new ObjectId(id));
+	  		
+		}else{
+			throw new ProductNotFoundException();
+		}
+		}
+
     }
 
     //PUT
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public void modifyProductById(@PathVariable("id") ObjectId id, @Valid @RequestBody Product product){
-        product.setId(id);
-
+    public void modifyProductById(@PathVariable("id") String id, @Valid @RequestBody Product product){
+       
+        if(id.length()!=24) {
+			throw new ProductNotFoundException();
+		}else {
+			product.setId(new ObjectId(id));
         if(StringUtils.isEmpty(product.getType())||StringUtils.isEmpty(product.getCompanyName())||StringUtils.isEmpty(product.getProductName())||StringUtils.isEmpty(product.getProductionDate())||StringUtils.isEmpty(product.getExpirationDate())||StringUtils.isEmpty(Double.toString(product.getPrice())) ) {
  		   throw new OrderBadRequestException();
         }else {
-        if(iterateProducts(repository).contains(id.toHexString())){
-            execute(product);
+        if(repository.existsById(id)){
             repository.save(product);
         }else{
             throw new ProductNotFoundException();
         }
         }
+		}
     }
 
     //POST
@@ -68,23 +77,24 @@ public class ProductController{
         if(StringUtils.isEmpty(product.getType())||StringUtils.isEmpty(product.getCompanyName())||StringUtils.isEmpty(product.getProductName())||StringUtils.isEmpty(product.getProductionDate())||StringUtils.isEmpty(product.getExpirationDate())||StringUtils.isEmpty(Double.toString(product.getPrice())) ) {
   		   throw new OrderBadRequestException();
          }else {
-        execute(product);
+        repository.save(product);
          }
         return product;
     }
 
     //DELETE
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public void deleteProduct(@PathVariable ObjectId id){
-        if(iterateProducts(repository).contains(id.toHexString())){
-        	/*for(Order order1: repository1.findByproduct(repository.findBy_id(id))) {
-				   repository1.delete(order1);
-        	}*/
-            repository.delete(repository.findBy_id(id));
-            System.out.println("Product succesfully deleted");
-        }else{
-            throw new ProductNotFoundException();
-        }
+    public void deleteProduct(@PathVariable String id){
+    	 if(id.length()!=24) {
+				throw new ProductNotFoundException();
+		 }else {
+				if(repository.existsById(id)){ 
+		   	repository.delete(repository.findBy_id(new ObjectId(id)));
+		   	
+		   }else {
+		  throw new ProductNotFoundException();
+	  }
+	}
     }
 
     //METHODS
@@ -110,11 +120,11 @@ public class ProductController{
         }
     }
 
-    public ArrayList<String> iterateProducts(ProductRepository repo){
+   /* public ArrayList<String> iterateProducts(ProductRepository repo){
         ArrayList<String> listID = new ArrayList<>();
         for(Product product : repo.findAll()){
             listID.add(product.getId());
         }
         return listID;
-    }
+    }*/
 }

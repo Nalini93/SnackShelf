@@ -10,6 +10,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import com.snackshelf.*;
 
@@ -71,6 +72,8 @@ public class Order implements Serializable{
 	public void setTotal(double total) {
 		this.total = total;
 	}
+	
+
 
 	@Override
 	public String toString() {
