@@ -12,6 +12,8 @@ public class User{
     public ObjectId _id;
     public String name;
     public String surname;
+    public String username;
+    public String password;
 
     // Constructors
     public User(){
@@ -22,9 +24,11 @@ public class User{
 		
 		this._id = _id;
 	}
-	public User(String name, String surname){
+	public User(String name, String surname, String username, String password){
         this.name = name;
         this.surname = surname;
+        this.username= username;
+        this.password= password;
     }
 
     // ObjectId needs to be converted to string
@@ -51,6 +55,28 @@ public class User{
     public void setSurname(String surname){
         this.surname = surname;
     }
+    
+    
+	public String getUsername() {
+		return username;
+	}
+
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+
+	public String getPassword() {
+		return password;
+	}
+
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -64,10 +90,14 @@ public class User{
 				&& Objects.equals(surname, other.surname);
 	}
 
+
 	@Override
-    public String toString(){
-        return "User [_id=" + _id + ", name=" + name + ", surname=" + surname + "]";
-    }
+	public String toString() {
+		return "User [_id=" + _id + ", name=" + name + ", surname=" + surname + ", username=" + username + ", password="
+				+ password + "]";
+	}
+
+	
 
 	
 }

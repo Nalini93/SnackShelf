@@ -18,7 +18,6 @@ import com.snackshelf.*;
 public class Order implements Serializable{
 	@Id
 	public ObjectId _id;
-	public int quantity;
 	public double total;
 	//@DBRef
 	@Field("users")
@@ -32,10 +31,9 @@ public class Order implements Serializable{
 		
 	}
  
-	public Order(User user,List<Product> products, int quantity, double total) {
+	public Order(User user,List<Product> products,double total) {
 		this.user = user;
 		this.products=products;
-		this.quantity = quantity;
 		this.total = total;
 	}
 
@@ -60,26 +58,21 @@ public class Order implements Serializable{
 		this.products = products;
 	}
 
-	public int getQuantity() {
-		return quantity;
-	}
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
-	}
 	public double getTotal() {
 		return total;
 	}
 	public void setTotal(double total) {
 		this.total = total;
 	}
-	
-
 
 	@Override
 	public String toString() {
-		return "Order [_id=" + _id + ", quantity=" + quantity + ", total=" + total + ", user=" + user + ", products="
-				+ products + "]";
+		return "Order [_id=" + _id + ", total=" + total + ", user=" + user + ", products=" + products + "]";
 	}
+	
+
+
+	
 
 	
 }

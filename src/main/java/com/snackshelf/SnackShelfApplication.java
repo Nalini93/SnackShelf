@@ -15,6 +15,7 @@ public class SnackShelfApplication implements CommandLineRunner{
 	private ProductRepository prodRepo;
 	@Autowired
 	private OrderRepository orderRepo;
+	
 
 	public static void main(String[] args) {
 		SpringApplication.run(SnackShelfApplication.class, args);
@@ -39,6 +40,7 @@ public class SnackShelfApplication implements CommandLineRunner{
 		for(Order order : orderRepo.findAll()){
 			System.out.println(order);
 		}
+		
 		
 	}
 }

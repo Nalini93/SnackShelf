@@ -3,6 +3,7 @@ package com.snackshelf;
 import org.apache.commons.lang3.StringUtils;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +15,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+@CrossOrigin(origins = "http://localhost:4200")
 
 @RestController
 @RequestMapping("/products")
@@ -120,11 +123,5 @@ public class ProductController{
         }
     }
 
-   /* public ArrayList<String> iterateProducts(ProductRepository repo){
-        ArrayList<String> listID = new ArrayList<>();
-        for(Product product : repo.findAll()){
-            listID.add(product.getId());
-        }
-        return listID;
-    }*/
+   
 }

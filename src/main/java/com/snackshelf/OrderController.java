@@ -3,14 +3,18 @@ package com.snackshelf;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import javax.validation.Valid;
+
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 import org.apache.commons.lang3.StringUtils;
-
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/orders")
   public class OrderController {
@@ -67,7 +71,7 @@ import org.apache.commons.lang3.StringUtils;
 		}else {
 			 order.set_id(new ObjectId(id));
 	
-	   if(order.getQuantity()<=0|| order.getTotal()<=0 || StringUtils.isEmpty(Integer.toString(order.getQuantity()))||StringUtils.isEmpty(Double.toString(order.getTotal()))) {
+	   if(order.getTotal()<=0 ||StringUtils.isEmpty(Double.toString(order.getTotal()))) {
 		   throw new OrderBadRequestException();
 	   }else {
 		   if(repository1.existsById((order.getuser().get_id())) && productsexist && repository.existsById(id) /*&& order.getuser().equals(repository1.findById(order.getuser().get_id()))*/) {
@@ -84,23 +88,16 @@ import org.apache.commons.lang3.StringUtils;
 	  }
 	
 	//POST
+	@ResponseBody
 	@RequestMapping(value = "/", method = RequestMethod.POST)
 	  public Order createOrder(@Valid @RequestBody Order order) throws OrderBadRequestException, OrderNotFoundRequestException {
-	   order.set_id(ObjectId.get());
-	   boolean productsexist= true;
-	   for(Product product1:order.getProducts())
-	   {
-		   if(!repository2.existsById(product1.getId().toString())) 
-			  
-			   productsexist=false;
-		   
-	   }
-
-
-	  if(order.getQuantity()<=0|| order.getTotal()<=0 || order.getuser()==null || order.getProducts()==null || StringUtils.isEmpty(Integer.toString(order.getQuantity()))||StringUtils.isEmpty(Double.toString(order.getTotal())) ) {
+		System.out.println(order);
+		order.set_id(ObjectId.get());
+		
+	  if(order.getTotal()<=0 || order.getuser()==null || order.getProducts()==null ||StringUtils.isEmpty(Double.toString(order.getTotal())) ) {
 		  throw new OrderBadRequestException();
 	   }else {
-		   	if(repository1.existsById(order.getuser().get_id()) && productsexist) {
+		   	if(repository1.existsById(order.getuser().get_id()) && productExists(order)) {
 		   		repository.save(order);
 		   	}else {
 		   		throw new OrderBadRequestException();
@@ -124,5 +121,18 @@ import org.apache.commons.lang3.StringUtils;
 	  	}
 		 }
 	}
+	
+	public boolean productExists(Order order) {
+		boolean productsexist=true;
+		for(Product product1:order.getProducts()) {
+			if(!repository2.existsById(product1.getId().toString())) {
+				productsexist=false;	 
+			} 
+		}
+		return productsexist;	
+	}
+	
+	
+	
 
- }
+	}
