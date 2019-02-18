@@ -93,11 +93,14 @@ import org.apache.commons.lang3.StringUtils;
 	  public Order createOrder(@Valid @RequestBody Order order) throws OrderBadRequestException, OrderNotFoundRequestException {
 		System.out.println(order);
 		order.set_id(ObjectId.get());
+		//for(Product product: order.getproducts())
 		
 	  if(order.getTotal()<=0 || order.getuser()==null || order.getProducts()==null ||StringUtils.isEmpty(Double.toString(order.getTotal())) ) {
 		  throw new OrderBadRequestException();
 	   }else {
 		   	if(repository1.existsById(order.getuser().get_id()) && productExists(order)) {
+		   		
+		   		updateproductStock(order);
 		   		repository.save(order);
 		   	}else {
 		   		throw new OrderBadRequestException();
@@ -122,14 +125,50 @@ import org.apache.commons.lang3.StringUtils;
 		 }
 	}
 	
+	@RequestMapping(value = "/listorder/{id}", method = RequestMethod.GET)
+	public List<Order> OrderByUser(@PathVariable("id") String id) throws OrderNotFoundRequestException {
+		List<Order> orderlist;
+		User user1;
+		user1=repository1.findBy_id(new ObjectId(id));
+		if(user1==null) {
+			throw new UserNotFoundRequestException();
+		}else {
+		orderlist=repository.findByuser(user1);
+		if((orderlist==null)) {
+			throw new OrderNotFoundRequestException();	
+		}
+		}
+		return orderlist;
+	}
+	
 	public boolean productExists(Order order) {
 		boolean productsexist=true;
 		for(Product product1:order.getProducts()) {
 			if(!repository2.existsById(product1.getId().toString())) {
-				productsexist=false;	 
-			} 
+				
+				productsexist=false;
+			}else {
+				Product product2=repository2.findBy_id(new ObjectId(product1.getId()));
+				if(product1.quantity>product2.quantity) {
+					productsexist=false;
+				}
+			}
 		}
 		return productsexist;	
+	}
+	
+	
+	
+	public void updateproductStock (Order order){
+		List<Product> listproducts=order.getProducts();
+		System.out.println(listproducts);
+		for(Product product1:order.getProducts()) {
+			if(repository2.existsById(product1.getId().toString())) {
+			Product product2 = repository2.findBy_id(new ObjectId(product1.getId()));
+				product2.decreaseQuantity();
+				repository2.save(product2);	
+			}			
+		}
 	}
 	
 	

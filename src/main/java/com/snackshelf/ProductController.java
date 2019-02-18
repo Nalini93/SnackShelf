@@ -77,7 +77,7 @@ public class ProductController{
     @RequestMapping(value = "/", method = RequestMethod.POST)
     public Product createProduct(@Valid @RequestBody Product product) throws ProductNotFoundException{
         product.setId(ObjectId.get());
-        if(StringUtils.isEmpty(product.getType())||StringUtils.isEmpty(product.getCompanyName())||StringUtils.isEmpty(product.getProductName())||StringUtils.isEmpty(product.getProductionDate())||StringUtils.isEmpty(product.getExpirationDate())||StringUtils.isEmpty(Double.toString(product.getPrice())) ) {
+        if(StringUtils.isEmpty(product.getType())||StringUtils.isEmpty(product.getCompanyName())||StringUtils.isEmpty(product.getProductName())||StringUtils.isEmpty(product.getProductionDate())||StringUtils.isEmpty(product.getExpirationDate())||StringUtils.isEmpty(Double.toString(product.getPrice()))|| StringUtils.isEmpty(Integer.toString(product.getQuantity()))|| (product.getQuantity()<0) ) {
   		   throw new OrderBadRequestException();
          }else {
         repository.save(product);

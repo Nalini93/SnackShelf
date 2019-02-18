@@ -122,16 +122,16 @@ import org.apache.commons.lang3.StringUtils;
 
 	
 	@RequestMapping(value = "/login/", method = RequestMethod.POST)
-	 public User LoginUser(@Valid @RequestBody User user) throws LoginBadRequestException {
+	 public User LoginUser(@Valid @RequestBody User user) throws LoginBadRequestException, LoginNotFoundRequestException {
 		String token="oklogin";
 		User user1;
 		  if(StringUtils.isEmpty(user.username)||StringUtils.isEmpty(user.password)){
 			  
-			  throw new LoginBadRequestException();
+			  throw new LoginNotFoundRequestException();
 		  }else {
 			  user1=repository.findByUsername(user.username);
 			  if(user1==null) {
-				  throw new LoginBadRequestException();
+				  throw new LoginNotFoundRequestException();
 			  }else 
 			  {
 			 if(!(user1.getPassword().contentEquals(user.getPassword()))) {

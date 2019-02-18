@@ -10,6 +10,7 @@ public class Product{
     public ObjectId _id;
     public String type, productName, companyName, productionDate, expirationDate;
     public double price;
+    public int quantity;
 
     public String getId(){
         return _id.toHexString();
@@ -50,7 +51,18 @@ public class Product{
     public void setPrice(double price){
         this.price = price;
     }
-    @Override
+    
+    public int getQuantity() {
+		return quantity;
+	}
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+	
+	 public void decreaseQuantity() {
+	        this.quantity--;
+	    }
+	/*@Override
     public String toString(){
         return "Product[" +
                 "_productId=" + _id +
@@ -61,5 +73,14 @@ public class Product{
                 ", expirationDate=" + expirationDate +
                 ", price=" + price +
                 ']';
-    }
+    }*/
+	@Override
+	public String toString() {
+		return "Product [_id=" + _id + ", type=" + type + ", productName=" + productName + ", companyName="
+				+ companyName + ", productionDate=" + productionDate + ", expirationDate=" + expirationDate + ", price="
+				+ price + ", quantity=" + quantity + "]";
+	}
+	
+	
+	
 }
